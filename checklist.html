@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The checklist</title>
+    <script src="vue.global.prod.js" defer></script>
+</head>
+
+<body>
+    <div id="msg">
+        <h1 v-bind:title="titre">{{animeName }}</h1>
+        <!-- v-model synchronise la valeur du input avec celle de l'attribut Perso Présent dans return -->
+        <input type="text" v-model="perso" />
+        <button @click="addPerso" v-if="perso != '' ">Ajouter personnage</button>
+
+        <!-- @click ou v-on:click -->
+        <!-- renvoie liste perso sans utisation composant -->
+        <!-- <li v-for="persoName in listePerso" @click="reverse">{{persoName}}</li> -->
+
+        <!-- renvoie liste perso en utilisant un composant -->
+        <yes v-bind:nomperso="persoName" v-for="persoName in listePerso" @click="reverse"></yes>
+
+    </div>
+
+
+    <script src="vue.global.prod.js"></script>
+    <script>
+        const animeApp = Vue.createApp({
+            data() {
+                return {
+                    animeName: "Jujutsu kaizen : Ajoutez des personnages de l'animé",
+                    perso: '',
+                    message: 'JJK ',
+                    titre: 'Click to see the new season',
+                    listePerso: ['Gojo', 'Suguru', 'Yuji', 'Megumi', 'Kento', 'nobara', 'Maki', 'Togue', 'Panda']
+                }
+            },
+            methods: {
+                reverse() {
+                    // "This" agit sur les éléments du return dans l'instance actuel de Vue : App 
+                    this.listePerso.reverse();
+                },
+                addPerso() {
+                    this.listePerso.push(this.perso);
+
+                }
+            }
+        })
+
+        // Premier component pour lister le tableau de personnage
+        animeApp.component('yes', {
+            props: ['nomperso', 'imageperso'],
+            template: `<li> <b>{{ nomperso }}</b> </li>`
+        })
+
+        animeApp.mount("#msg");
+    </script>
+    <!-- Nomperso et images 
+        <div >
+        listePerso:[ {name:"Gojo", img:"gojo.jpeg"},
+        {name:"suguru", img:"suguru.jpeg"},
+        {name:"yuji", img:"yuji.jpeg"},
+        {name:"megumi", img:"megumi.jpeg"},
+        {name:"kento", img:"kento.jpeg"},
+        {name:"nobara", img:"nobara.jpeg"},
+        {name:"maki", img:"maki.jpeg"},
+        {name:"toge", img:"toge.jpeg"},
+        {name:"panda", img:"panda.jpeg"}
+]
+}
+    </div> -->
+
+</body>
+
+</html>
