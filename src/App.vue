@@ -1,10 +1,10 @@
 <template>
 
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="HelloWorld 1"/>
 
-  <HelloWorld msg="Message 2"/>
+  <HelloWorld msg="HelloWorld 2"/>
 
-  <HelloWorld msg="Message 3"/>
+  <HelloWorld msg="HelloWorld 3"/>
 </template>
 
 <script>

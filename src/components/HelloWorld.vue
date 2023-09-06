@@ -6,13 +6,13 @@
     </p>
 
     <!-- <ul id=30 [...] > -->
-    <ul v-bind:id="dynamicId" v-bind:class="myStyle">
-      <li v-for="item in myArray" :key="item.id">
+    <div v-bind:id="dynamicId" v-bind:class="myStyle">
+      <div v-for="item in myArray" :key="item.id">
           <p> {{  item.message  }}</p>
-      </li>
-    </ul>
+      </div>
+    </div>
 
-    <MyButton myText="Test 1"></MyButton>
+    <MyButton myText="Button 1"></MyButton>
   </div>
 </template>
 
@@ -31,8 +31,8 @@ export default {
   },
   data: function() {
     return {
-      my_message: String,
-      myArray: [ { id: 1, message: "Hello 1"} ],
+      my_message: "Test",
+      myArray: [ { id: 1, message: "[For] - Element 1"}, { id: 2, message: "[For] - Element 2"} ],
       dynamicId: 30
     }
   },
